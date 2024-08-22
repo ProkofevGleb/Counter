@@ -6,7 +6,7 @@
   
 *The counter application. His idea is simple: there should be one big button in the application. How many times it was clicked — this figure is displayed on the counter.*
   
-## <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGRsdnAzZnZybjI0dGhzNG5jOWNxOWlrZGViYTBsN2xxZGo2d25sZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/2Zsyf93bPW8e0a2zhX/giphy.gif" width="15px"/> **Усложнённая задача | Complicated task**  
+## <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGRsdnAzZnZybjI0dGhzNG5jOWNxOWlrZGViYTBsN2xxZGo2d25sZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/2Zsyf93bPW8e0a2zhX/giphy.gif" width="20px"/> **Усложнённая задача | Complicated task**  
 Приложение-счётчик. При нажатии на кнопку «+» или «-» значение счётчика меняется на -1 (если не было равно 0) или +1.  
 Значение счётчика обнуляется по дополнительной кнопке, а в текстовом поле добавляются комментарии с изменениями.  
 Дополнительно, добавлен функционал авто-скролла, чтобы всегда было видно последнее изменение.  
