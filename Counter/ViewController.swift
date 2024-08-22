@@ -9,36 +9,46 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var valueCounterLabel: UILabel!
-    @IBOutlet weak var historyTextView: UITextView!
-    @IBOutlet weak var subtractionButton: UIButton!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
+    // связываем элементы интерфейса
+    @IBOutlet weak private var valueCounterLabel: UILabel!
+    @IBOutlet weak private var historyTextView: UITextView!
+    @IBOutlet weak private var subtractionButton: UIButton!
+    @IBOutlet weak private var addButton: UIButton!
+    @IBOutlet weak private var resetButton: UIButton!
     
-    var count = 0
+    // задаем начальное значение для счётчика
+    private var count = 0
+    // создаем объект класса для форматирования даты
+    private let dateFormatter = DateFormatter()
     
-    let dateFormatter = DateFormatter()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupHistoryTextView()
+    }
     
-    func currentTime() -> String {
+    // функция для вычисления и форматирования текущей даты
+    private func currentTime() -> String {
         dateFormatter.dateFormat = "dd.MM.yy HH:mm:ss"
         let formattedDate = dateFormatter.string(from: Date())
         return formattedDate
     }
     
-    func scrollBottom() {
+    // функция автоматического скролла по мере заполнения текстом
+    private func scrollBottom() {
         let range = NSMakeRange(historyTextView.text.count - 1, 1)
         historyTextView.scrollRangeToVisible(range)
     }
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.historyTextView.layer.borderWidth = 2
-        self.historyTextView.layer.cornerRadius = 10
-        self.historyTextView.layer.borderColor = UIColor.systemBlue.cgColor
-        self.historyTextView.isEditable = false
+    
+    // настройки отображения для текстового поля с историей
+    private func setupHistoryTextView() {
+        historyTextView.layer.borderWidth = 2
+        historyTextView.layer.cornerRadius = 10
+        historyTextView.layer.borderColor = UIColor.systemBlue.cgColor
+        historyTextView.isEditable = false
     }
     
-    @IBAction func buttonSubtractionDidTap(_ sender: Any) {
+    // устанавливаем действие при нажатии на кнопку минус
+    @IBAction private func buttonSubtractionDidTap(_ sender: Any) {
         if count > 0 {
             count -= 1
             self.valueCounterLabel.text = "Значение счётчика: \(count)"
@@ -50,18 +60,19 @@ class ViewController: UIViewController {
         scrollBottom()
     }
     
-    @IBAction func buttonAddDidTap(_ sender: Any) {
+    // устанавливаем действие при нажатии на кнопку плюс
+    @IBAction private func buttonAddDidTap(_ sender: Any) {
         count += 1
         self.valueCounterLabel.text = "Значение счётчика: \(count)"
         self.historyTextView.text += "\n [\(currentTime())]: значение изменено на +1"
         scrollBottom()
     }
     
-    @IBAction func buttonResetDidTap(_ sender: Any) {
+    // устанавливаем действие при нажатии на кнопку сброса
+    @IBAction private func buttonResetDidTap(_ sender: Any) {
         count = 0
         self.valueCounterLabel.text = "Значение счётчика: \(count)"
         self.historyTextView.text += "\n [\(currentTime())]: значение сброшено"
         scrollBottom()
     }
-    
 }
